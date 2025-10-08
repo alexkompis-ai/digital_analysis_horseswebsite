@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Hästguiden – Allt om hästar, raser & skötsel</title>
+  <meta name="description" content="Hästguiden: lär dig om hästraser, skötsel, utrustning och träning. Filterbara raser, galleri, quiz och nyhetsbrev – perfekt för att öva digital analys." />
+  <link rel="canonical" href="https://example.com/" />
+
+  <!-- Open Graph / Twitter for länkförhandsvisning -->
+  <meta property="og:title" content="Hästguiden – Allt om hästar" />
+  <meta property="og:description" content="Utforska raser, skötsel, galleri och quiz. Inbyggda event för din digitala analys." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com/" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?w=1200" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Bas-styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD: WebSite + sök -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Hästguiden",
+    "url": "https://example.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://example.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- (Valfritt) Byt GTM-XYZ till din Container-ID för att testa GTM -->
+  <!--
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XYZ');
+  </script>
+  -->
+</head>
+<body>
+  <!-- (Valfritt) GTM noscript
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XYZ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  -->
+
+  <a class="skip-link" href="#main">Hoppa till innehåll</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#" class="logo" data-track="logo_click" aria-label="Hästguiden startsida">🐴 Hästguiden</a>
+
+      <nav class="main-nav" aria-label="Huvudmeny">
+        <button class="nav-toggle" aria-controls="primary-menu" aria-expanded="false">Meny</button>
+        <ul id="primary-menu">
+          <li><a href="#raser" data-nav>Raser</a></li>
+          <li><a href="#skotsel" data-nav>Skötsel</a></li>
+          <li><a href="#galleri" data-nav>Galleri</a></li>
+          <li><a href="#blogg" data-nav>Blogg</a></li>
+          <li><a href="#kontakt" data-nav>Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <form class="site-search" role="search" aria-label="Sök raser">
+        <label for="searchBreeds" class="visually-hidden">Sök raser</label>
+        <input id="searchBreeds" name="q" type="search" placeholder="Sök raser…" autocomplete="off" />
+        <button type="submit" class="btn">Sök</button>
+      </form>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero container">
+      <div class="hero-copy">
+        <h1 id="heroTitle">Välkommen till Hästguiden</h1>
+        <p>Upptäck hästarnas värld – raser, skötsel, utrustning och träning. Sajtens knappar och formulär skickar händelser till <code>dataLayer</code> så du kan öva analys.</p>
+        <div class="hero-ctas">
+          <a href="#raser" class="btn btn-primary" data-cta="cta_see_breeds">Utforska raser</a>
+          <button class="btn btn-outline" data-open-modal="signup">Bli medlem</button>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?w=1200" alt="Häst i rörelse på en äng" loading="eager" />
+        <figcaption>Foto: Unsplash</figcaption>
+      </figure>
+    </section>
+
+    <section id="raser" class="container section">
+      <header class="section-header">
+        <h2>Populära hästraser</h2>
+        <p>Filtrera efter storlek och användningsområde eller sök i fältet ovan.</p>
+      </header>
+
+      <div class="filters" role="group" aria-label="Filter">
+        <div>
+          <strong>Storlek:</strong>
+          <label><input type="checkbox" data-filter="size" value="ponny" /> Ponny</label>
+          <label><input type="checkbox" data-filter="size" value="medel" /> Medel</label>
+          <label><input type="checkbox" data-filter="size" value="stor" /> Stor</label>
+        </div>
+        <div>
+          <strong>Användning:</strong>
+          <label><input type="checkbox" data-filter="use" value="dressyr" /> Dressyr</label>
+          <label><input type="checkbox" data-filter="use" value="hoppning" /> Hoppning</label>
+          <label><input type="checkbox" data-filter="use" value="trav" /> Trav</label>
+          <label><input type="checkbox" data-filter="use" value="turridning" /> Turridning</label>
+        </div>
+        <button class="btn btn-small" id="resetFilters">Rensa filter</button>
+      </div>
+
+      <ul class="card-grid" id="breedGrid">
+        <!-- Exempel-kort, data-attribut för filter & analys -->
+        <li class="card" data-breed="Arabiskt fullblod" data-size="medel" data-use="dressyr turridning">
+          <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800" alt="Arabiskt fullblod" loading="lazy" />
+          <div class="card-body">
+            <h3>Arabiskt fullblod</h3>
+            <p>Elegant och uthållig ras känd för sin intelligens.</p>
+            <div class="card-actions">
+              <button class="btn btn-like" data-like="Arabiskt fullblod" aria-pressed="false">❤ Gilla</button>
+              <a href="https://sv.wikipedia.org/wiki/Arabiskt_fullblod" class="btn btn-outline outbound" target="_blank" rel="noopener">Läs mer</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card" data-breed="Varmblodig travare" data-size="stor" data-use="trav turridning">
+          <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5c?w=800" alt="Varmblodig travare" loading="lazy" />
+          <div class="card-body">
+            <h3>Varmblodig travare</h3>
+            <p>Snabb, samarbetsvillig och vanlig inom travsport.</p>
+            <div class="card-actions">
+              <button class="btn btn-like" data-like="Varmblodig travare" aria-pressed="false">❤ Gilla</button>
+              <a href="https://sv.wikipedia.org/wiki/Varmblodig_travare" class="btn btn-outline outbound" target="_blank" rel="noopener">Läs mer</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card" data-breed="Shetlandsponny" data-size="ponny" data-use="turridning">
+          <img src="https://images.unsplash.com/photo-1591209627710-4b1c8f2eec77?w=800" alt="Shetlandsponny" loading="lazy" />
+          <div class="card-body">
+            <h3>Shetlandsponny</h3>
+            <p>Liten, stark och barnvänlig – perfekt för nybörjare.</p>
+            <div class="card-actions">
+              <button class="btn btn-like" data-like="Shetlandsponny" aria-pressed="false">❤ Gilla</button>
+              <a href="https://sv.wikipedia.org/wiki/Shetlandsponny" class="btn btn-outline outbound" target="_blank" rel="noopener">Läs mer</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card" data-breed="Friserhäst" data-size="stor" data-use="dressyr turridning">
+          <img src="https://images.unsplash.com/photo-1521195025764-4fd1a66ac11d?w=800" alt="Friserhäst" loading="lazy" />
+          <div class="card-body">
+            <h3>Friserhäst</h3>
+            <p>Svart, högrest och spektakulös med kraftfull trav.</p>
+            <div class="card-actions">
+              <button class="btn btn-like" data-like="Friserhäst" aria-pressed="false">❤ Gilla</button>
+              <a href="https://sv.wikipedia.org/wiki/Friserh%C3%A4st" class="btn btn-outline outbound" target="_blank" rel="noopener">Läs mer</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card" data-breed="Svenskt halvblod" data-size="stor" data-use="hoppning dressyr">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800" alt="Svenskt halvblod" loading="lazy" />
+          <div class="card-body">
+            <h3>Svenskt halvblod</h3>
+            <p>Allroundhäst i toppklass för både hoppning och dressyr.</p>
+            <div class="card-actions">
+              <button class="btn btn-like" data-like="Svenskt halvblod" aria-pressed="false">❤ Gilla</button>
+              <a href="https://sv.wikipedia.org/wiki/Svenskt_varmblod" class="btn btn-outline outbound" target="_blank" rel="noopener">Läs mer</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="card" data-breed="Islandshäst" data-size="medel" data-use="turridning">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800" alt="Islandshäst" loading="lazy" />
+          <div class="card-body">
+            <h3>Islandshäst</h3>
+            <p>Känd för gångarten tölt – trygg, stark och social.</p>
+            <div class="card-actions">
+              <button class="btn btn-like" data-like="Islandshäst" aria-pressed="false">❤ Gilla</button>
+              <a href="https://sv.wikipedia.org/wiki/Islandsh%C3%A4st" class="btn btn-outline outbound" target="_blank" rel="noopener">Läs mer</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skotsel" class="container section">
+      <header class="section-header">
+        <h2>Skötsel & träning</h2>
+        <p>Grunderna för en frisk, glad och vältränad häst.</p>
+      </header>
+
+      <div class="accordion" id="careAccordion">
+        <details>
+          <summary>Utfodring</summary>
+          <p>Grovt hö och rent vatten är basen. Anpassa kraftfoder efter arbete och hull.</p>
+        </details>
+        <details>
+          <summary>Hovvård</summary>
+          <p>Verkning var 6–8:e vecka. Kontrollera sprickor, värme och stenar i sulan.</p>
+        </details>
+        <details>
+          <summary>Utrustning</summary>
+          <p>Välpassande sadel och träns. Använd schabrak och skydd vid behov.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="galleri" class="container section">
+      <header class="section-header">
+        <h2>Galleri</h2>
+        <p>Klicka på en bild för att öppna lightbox.</p>
+      </header>
+      <div class="gallery" role="list">
+        <button class="gallery-item" data-img="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=1600" aria-label="Öppna bild 1">
+          <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400" alt="Häst i stall" loading="lazy" />
+        </button>
+        <button class="gallery-item" data-img="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1600" aria-label="Öppna bild 2">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400" alt="Häst på slätt" loading="lazy" />
+        </button>
+        <button class="gallery-item" data-img="https://images.unsplash.com/photo-1553284965-83fd3e82fa5c?w=1600" aria-label="Öppna bild 3">
+          <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5c?w=400" alt="Travbana" loading="lazy" />
+        </button>
+      </div>
+    </section>
+
+    <section class="container section" aria-labelledby="quizTitle">
+      <header class="section-header">
+        <h2 id="quizTitle">Mini-quiz</h2>
+        <p>Testa dina baskunskaper.</p>
+      </header>
+      <form id="quizForm">
+        <fieldset>
+          <legend>1) Vad heter gångarten som Islandshästen är känd för?</legend>
+          <label><input type="radio" name="q1" value="tölt" required /> Tölt</label>
+          <label><input type="radio" name="q1" value="passage" /> Passage</label>
+        </fieldset>
+        <fieldset>
+          <legend>2) Hur ofta bör hovarna verkas?</legend>
+          <label><input type="radio" name="q2" value="6-8" required /> Var 6–8:e vecka</label>
+          <label><input type="radio" name="q2" value="12" /> Var 12:e vecka</label>
+        </fieldset>
+        <fieldset>
+          <legend>3) Vad är hästens grundfoder?</legend>
+          <label><input type="radio" name="q3" value="hö" required /> Grovt hö</label>
+          <label><input type="radio" name="q3" value="kraft" /> Endast kraftfoder</label>
+        </fieldset>
+        <button class="btn btn-primary" type="submit">Rätta</button>
+        <p id="quizResult" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="blogg" class="container section">
+      <header class="section-header">
+        <h2>Blogg</h2>
+      </header>
+
+      <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+        <header>
+          <h3 itemprop="headline">Välja rätt sadel – 5 tips</h3>
+          <p class="post-meta"><time itemprop="datePublished" datetime="2025-08-01">1 augusti 2025</time> · 3 min</p>
+        </header>
+        <p itemprop="description">En välpassande sadel fördelar tryck, låter bogarna röra sig och avlastar ryggen.</p>
+        <a class="btn btn-outline outbound" href="https://www.ridsport.se" target="_blank" rel="noopener" itemprop="url">Läs mer på Ridsport.se</a>
+      </article>
+
+      <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+        <header>
+          <h3 itemprop="headline">Checklista inför höstbetet</h3>
+          <p class="post-meta"><time itemprop="datePublished" datetime="2025-09-12">12 september 2025</time> · 2 min</p>
+        </header>
+        <p itemprop="description">Parasiter, vatten och stängsel – här är grunderna för tryggt bete.</p>
+        <a class="btn btn-outline outbound" href="https://www.sva.se" target="_blank" rel="noopener" itemprop="url">Läs mer på SVA</a>
+      </article>
+    </section>
+
+    <section id="kontakt" class="container section">
+      <header class="section-header">
+        <h2>Nyhetsbrev</h2>
+        <p>Få tips varje månad. Vi spårar endast samtyckta händelser.</p>
+      </header>
+      <form id="newsletterForm" novalidate>
+        <label for="email">E-post</label>
+        <input id="email" name="email" type="email" placeholder="namn@exempel.se" required />
+        <label for="gdpr">
+          <input id="gdpr" type="checkbox" required />
+          Jag samtycker till behandling av personuppgifter enligt integritetspolicyn.
+        </label>
+        <button class="btn btn-primary" type="submit">Prenumerera</button>
+        <p id="newsletterMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Hästguiden. En demo-sajt för digital analys.</p>
+      <nav aria-label="Sidfot">
+        <a href="#" data-open-modal="privacy">Integritet</a>
+        <a class="outbound" href="https://sv.wikipedia.org/wiki/H%C3%A4st" target="_blank" rel="noopener">Om hästen (Wikipedia)</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Till toppen">↑</button>
+
+  <!-- Signup-modal -->
+  <dialog id="signupModal" aria-labelledby="signupTitle">
+    <form id="signupForm" method="dialog">
+      <header>
+        <h3 id="signupTitle">Bli medlem</h3>
+        <button class="close" value="cancel" aria-label="Stäng">×</button>
+      </header>
+      <label for="name">Namn</label>
+      <input id="name" name="name" required />
+      <label for="signupEmail">E-post</label>
+      <input id="signupEmail" name="email" type="email" required />
+      <label for="level">Ridnivå</label>
+      <select id="level" name="level" required>
+        <option value="">Välj nivå…</option>
+        <option>Nybörjare</option>
+        <option>Medel</option>
+        <option>Avancerad</option>
+      </select>
+      <menu class="dialog-actions">
+        <button class="btn btn-outline" value="cancel">Avbryt</button>
+        <button class="btn btn-primary" value="submit">Gå med</button>
+      </menu>
+      <p id="signupMsg" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <!-- Lightbox-modal -->
+  <dialog id="lightbox" aria-label="Bildvisning">
+    <button class="close" aria-label="Stäng">×</button>
+    <img id="lightboxImg" alt="" />
+  </dialog>
+
+  <!-- Integritetspolicy-modal -->
+  <dialog id="privacyModal" aria-labelledby="privacyTitle">
+    <article>
+      <header>
+        <h3 id="privacyTitle">Integritet & cookies</h3>
+        <button class="close" aria-label="Stäng">×</button>
+      </header>
+      <p>Detta är en träningssida. Vi använder enbart nödvändiga cookies. Analys-events skickas till <code>dataLayer</code> och/eller <code>navigator.sendBeacon</code> till <code>/collect</code> (dummy).</p>
+    </article>
+  </dialog>
+
+  <!-- Cookie-banner -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookiebanner">
+    <p>Vi använder nödvändiga cookies. Godkänner du analys-mätning på denna demo?</p>
+    <div class="actions">
+      <button class="btn btn-small" data-consent="deny">Nej tack</button>
+      <button class="btn btn-small btn-primary" data-consent="allow">Ja, godkänn</button>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="noscript">Observera: JavaScript är avstängt – vissa funktioner och spårning fungerar inte.</p>
+  </noscript>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
